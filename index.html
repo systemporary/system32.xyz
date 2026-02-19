@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Test</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="room-wrapper" id="room">
+        <img src="bgfull.png" class="room-bg">
+        
+        <div id="sketchbook-trigger">
+            <img src="bookss.png" alt="Books">
+        </div>
+    </div>
+
+    <div id="pc-image-prompt">
+        <img src="pcsketchbook.png" alt="PC Screen">
+    </div>
+
+    <div id="overlay" class="overlay hidden">
+        <div id="exit-zone">
+        </div>
+
+        <div id="sketchbook-container">
+            <img src="sketchcover.png" id="page-img" alt="Sketchbook Page"> 
+            
+            <div class="nav-ui">
+                <button id="prev-btn">←</button>
+                <button id="next-btn">→</button>
+            </div>
+        </div>
+    </div>
+
+    <audio id="bg-music" loop src="background-music.mp3"></audio>
+    <audio id="flip-sound" src="flip.mp3"></audio>
+
+    <script src="script.js"></script>
+</body>
+</html>

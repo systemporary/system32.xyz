@@ -1,0 +1,115 @@
+/* 1. BASICS */
+body, html {
+    margin: 0; padding: 0;
+    width: 100%; height: 100%;
+    overflow: hidden;
+    background-color: #000;
+}
+
+.room-wrapper {
+    position: relative;
+    width: 100vw; height: 100vh;
+    display: flex; justify-content: center; align-items: center;
+    transition: filter 0.6s ease;
+    z-index: 1;
+}
+
+.room-bg {
+    max-width: 100%; max-height: 100%;
+    object-fit: contain;
+}
+
+.blur { filter: blur(12px) brightness(0.5); }
+
+/* 2. THE BOOK ICON */
+#sketchbook-trigger {
+    position: absolute;
+    top: 58%; left: 56%; 
+    width: 220px; 
+    cursor: pointer;
+    z-index: 100;
+    transform: translate(-50%, -50%);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+#sketchbook-trigger:hover { transform: translate(-50%, -50%) scale(1.1); }
+#sketchbook-trigger img { width: 100%; height: auto; }
+
+/* 3. THE PC SCREEN PROMPT */
+#pc-image-prompt {
+    position: fixed;
+    top: 62%; left: 37%; 
+    width: 1330px; 
+    transform: translate(-50%, -50%) translate(250px, -120px);
+    z-index: 50; /* Below the sketchbook overlay */
+    pointer-events: none;
+    opacity: 0; /* 1 2 show always */
+    transition: opacity 0.1s ease;
+}
+
+/* CLASS FOR JS */
+.show-prompt {
+    opacity: 1 !important;
+}
+
+#pc-image-prompt img { width: 100%; height: auto; }
+
+/* 4. THE OVERLAY */
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6); 
+    backdrop-filter: blur(8px);
+    display: flex; justify-content: center; align-items: center;
+    z-index: 2000;
+    transition: opacity 0.4s ease;
+}
+
+#sketchbook-container {
+    position: relative;
+    width: 85%; max-width: 850px;
+    z-index: 2100;
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+#page-img {
+    width: 100%; height: auto;
+    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.8);
+    border-radius: 8px;
+    transition: opacity 0.3s ease;
+}
+
+/* 5. NAVIGATION */
+.nav-ui {
+    position: absolute;
+    top: 50%; left: -100px;
+    width: calc(100% + 200px);
+    display: flex; justify-content: space-between;
+    transform: translateY(-50%);
+    pointer-events: none; /* Allows clicks to pass to buttons */
+}
+
+.nav-ui button {
+    pointer-events: auto;
+    width: 65px; height: 65px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    color: white; border: 1px solid white;
+    font-size: 30px; cursor: pointer;
+    transition: 0.3s;
+}
+
+.nav-ui button:hover { background: white; color: black; }
+
+/* 6. EXIT & ANIMATION */
+#exit-zone {
+    position: absolute;
+    top: 0; width: 100%; height: 200px;
+    z-index: 2500;
+    display: flex; justify-content: center; align-items: center;
+    color: white; font-family: sans-serif; cursor: pointer;
+}
+
+.peek-down { transform: translateY(30vh); }
+.exit-down { transform: translateY(110vh); }
+.hidden { display: none !important; opacity: 0; }
